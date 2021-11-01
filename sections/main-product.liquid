@@ -1,15 +1,19 @@
 {% comment %}theme-check-disable TemplateLength{% endcomment %}
-{{ 'section-main-product.css' | asset_url | stylesheet_tag }}
+{{ 'section-card-product-core.css' | asset_url | stylesheet_tag }}
 {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'component-rte.css' | asset_url | stylesheet_tag }}
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'component-rating.css' | asset_url | stylesheet_tag }}
-{{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
+{{ 'section-custom-product.css' | asset_url | stylesheet_tag }}
+
 
 <link rel="stylesheet" href="{{ 'component-deferred-media.css' | asset_url }}" media="print" onload="this.media='all'">
-
+{{ 'splide.min.css' | asset_url | stylesheet_tag }}
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
 
 {%- assign first_3d_model = product.media | where: "media_type", "model" | first -%}
 {%- if first_3d_model -%}
@@ -21,37 +25,46 @@
 <section class="page-width">
   <div class="product grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
     <div class="grid__item product__media-wrapper">
-      <slider-component class="slider-mobile-gutter">
-        <a class="skip-to-content-link button visually-hidden" href="#ProductInfo-{{ section.id }}">
-          {{ "accessibility.skip_to_product_info" | t }}
-        </a>
-        <ul class="product__media-list grid grid--peek list-unstyled slider slider--mobile" role="list">
-          {%- assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' -%}
-          {%- if product.selected_or_first_available_variant.featured_media != null -%}
-            {%- assign media = product.selected_or_first_available_variant.featured_media -%}
-            <li class="product__media-item grid__item slider__slide{% if media.media_type != 'image' %} product__media-item--full{% endif %}{% if section.settings.hide_variants and variant_images contains media.src %} product__media-item--variant{% endif %}" data-media-id="{{ section.id }}-{{ media.id }}">
-              {% render 'product-thumbnail', media: media, position: 'featured', loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true %}
+      <div id="main-slider" class="splide">
+        <div class="splide__track">
+          <ul class="splide__list">
+            <li class="splide__slide">
+              <img src="https://cdn.shopify.com/s/files/1/0417/5590/2119/files/Front-example.png?v=1634122175"
+                   loading="lazy"
+                   id="frontBig"
+                   class="card-designer-slide"
+                   >
             </li>
-          {%- endif -%}
-          {%- for media in product.media -%}
-            {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
-              <li class="product__media-item grid__item slider__slide{% if media.media_type != 'image' %} product__media-item--full{% endif %}{% if section.settings.hide_variants and variant_images contains media.src %} product__media-item--variant{% endif %}" data-media-id="{{ section.id }}-{{ media.id }}">
-                {% render 'product-thumbnail', media: media, position: forloop.index, loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true %}
-              </li>
-            {%- endunless -%}
-          {%- endfor -%}
-        </ul>
-        <div class="slider-buttons no-js-hidden{% if product.media.size < 2 %} small-hide{% endif %}">
-          <button type="button" class="slider-button slider-button--prev" name="previous" aria-label="{{ 'accessibility.previous_slide' | t }}">{% render 'icon-caret' %}</button>
-          <div class="slider-counter caption">
-            <span class="slider-counter--current">1</span>
-            <span aria-hidden="true"> / </span>
-            <span class="visually-hidden">{{ 'accessibility.of' | t }}</span>
-            <span class="slider-counter--total">{% if section.settings.hide_variants %}{{ product.media.size | minus: variant_images.size | plus: 1 }}{% else %}{{ product.media.size }}{% endif %}</span>
-          </div>
-          <button type="button" class="slider-button slider-button--next" name="next" aria-label="{{ 'accessibility.next_slide' | t }}">{% render 'icon-caret' %}</button>
+            <li class="splide__slide">
+              <img src="https://cdn.shopify.com/s/files/1/0417/5590/2119/files/Back-example.png?v=1634122175"
+                   loading="lazy"
+                   id="backBig"
+                   class="card-designer-slide"
+                   >
+            </li>
+          </ul>
         </div>
-      </slider-component>
+      </div>
+      <div id="thumbnail-slider" class="splide">
+        <div class="splide__track">
+          <ul class="splide__list">
+            <li class="splide__slide thumbnail">
+              <img src="https://cdn.shopify.com/s/files/1/0417/5590/2119/files/Front-example.png?v=1634122175"
+                   loading="lazy"
+                   id="frontThumb"
+                   class="thumbnail-slider"
+                   >
+            </li>
+            <li class="splide__slide thumbnail">
+              <img src="https://cdn.shopify.com/s/files/1/0417/5590/2119/files/Back-example.png?v=1634122175"
+                   loading="lazy"
+                   id="backThumb"
+                   class="thumbnail-slider"
+                   >
+            </li>
+          </ul>
+        </div>
+      </div>
       {%- if first_3d_model -%}
         <button
           class="button button--full-width product__xr-button"
@@ -84,36 +97,39 @@
               {{ product.title | escape }}
             </h1>
           {%- when 'price' -%}
-            <div class="no-js-hidden" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+            <div class="no-js-hidden" id="price-{{ section.id }}" {{ block.shopify_attributes }}>
               {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large' -%}
             </div>
-            {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
-              <div class="product__tax caption rte">
-                {%- if shop.taxes_included -%}
-                  {{ 'products.product.include_taxes' | t }}
-                {%- endif -%}
-                {%- if shop.shipping_policy.body != blank -%}
-                  {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
-                {%- endif -%}
-              </div>
-            {%- endif -%}
             <div {{ block.shopify_attributes }}>
+              <div class="inputContainer">
+                <label class="form__label" for="downloadFile">Download Template</label>
+                <div class="downloadOptions">
+                  <button type="button" class="downloadFile" id="photoshop">
+                    <img class="adobeIcon" src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg">
+                  </button>
+                  <button type="button" class="downloadFile hidden" id="illustrator">
+                    <img class="adobeIcon" src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Adobe_Illustrator_CC_icon.svg">
+
+                  </button>
+                </div>
+              </div>
               {%- form 'product', product, id: 'product-form-installment', class: 'installment caption-large' -%}
-                <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-                {{ form | payment_terms }}
+              <label for="frontInput" class="form__label" id="frontLabel">Upload front</label>
+              <input id="frontInput" type="file" name="properties[Front]" accept="image/png, image/jpeg" form="product-form-{{ section.id }}"/>
+              <label for="backInput" class="form__label" id="backLabel">Upload back</label>
+              <input id="backInput" type="file" name="properties[Back]" accept="image/png, image/jpeg" form="product-form-{{ section.id }}"/>
+              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+              {{ form | payment_terms }}
               {%- endform -%}
             </div>
-          {%- when 'description' -%}
-            {%- if product.description != blank -%}
-              <div class="product__description rte">
-                {{ product.description }}
-              </div>
-            {%- endif -%}
+
+        
+            
           {%- when 'custom_liquid' -%}
             {{ block.settings.custom_liquid }}
           {%- when 'collapsible_tab' -%}
             <div class="product__accordion accordion" {{ block.shopify_attributes }}>
-              <details id="Details-{{ block.id }}-{{ section.id }}">
+              <details>
                 <summary>
                   <div class="summary__title">
                     {% render 'icon-accordion', icon: block.settings.icon %}
@@ -123,7 +139,7 @@
                   </div>
                   {% render 'icon-caret' %}
                 </summary>
-                <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
+                <div class="accordion__content rte">
                   {{ block.settings.content }}
                   {{ block.settings.page.content }}
                 </div>
@@ -146,7 +162,7 @@
                     id="Quantity-{{ section.id }}"
                     min="1"
                     value="1"
-                    form="{{ product_form_id }}"
+                    form="product-form-{{ section.id }}"
                   >
                 <button class="quantity__button no-js-hidden" name="plus" type="button">
                   <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title | escape }}</span>
@@ -154,18 +170,19 @@
                 </button>
               </quantity-input>
             </div>
+        
           {%- when 'popup' -%}
               <modal-opener class="product-popup-modal__opener no-js-hidden" data-modal="#PopupModal-{{ block.id }}" {{ block.shopify_attributes }}>
                 <button id="ProductPopup-{{ block.id }}" class="product-popup-modal__button link" type="button" aria-haspopup="dialog">{{ block.settings.text | default: block.settings.page.title }}</button>
               </modal-opener>
               <a href="{{ block.settings.page.url }}" class="product-popup-modal__button link no-js">{{ block.settings.text }}</a>
           {%- when 'share' -%}
-            <share-button id="Share-{{ section.id }}" class="share-button" {{ block.shopify_attributes }}>
+            <share-button class="share-button" {{ block.shopify_attributes }}>
               <button class="share-button__button hidden">
                 {% render 'icon-share' %}
                 {{ block.settings.share_label | escape }}
               </button>
-              <details id="Details-{{ block.id }}-{{ section.id }}">
+              <details>
                 <summary class="share-button__button">
                   {% render 'icon-share' %}
                   {{ block.settings.share_label | escape }}
@@ -177,7 +194,7 @@
                     <input type="text"
                           class="field__input"
                           id="url"
-                          value="{{ product.selected_variant.url | default: product.url | prepend: shop.url }}"
+                          value="{{ shop.url | append: product.url }}"
                           placeholder="{{ 'general.share.share_url' | t }}"
                           onclick="this.select();"
                           readonly
@@ -204,13 +221,13 @@
                       <fieldset class="js product-form__input">
                         <legend class="form__label">{{ option.name }}</legend>
                         {%- for value in option.values -%}
-                          <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                          <input type="radio" id="{{ section.id }}-{{ option.name }}-{{ forloop.index0 }}"
                                 name="{{ option.name }}"
                                 value="{{ value | escape }}"
-                                form="{{ product_form_id }}"
+                                form="product-form-{{ section.id }}"
                                 {% if option.selected_value == value %}checked{% endif %}
                           >
-                          <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                          <label for="{{ section.id }}-{{ option.name }}-{{ forloop.index0 }}">
                             {{ value }}
                           </label>
                         {%- endfor -%}
@@ -231,7 +248,7 @@
                         <select id="Option-{{ section.id }}-{{ forloop.index0 }}"
                           class="select__select"
                           name="options[{{ option.name | escape }}]"
-                          form="{{ product_form_id }}"
+                          form="product-form-{{ section.id }}"
                         >
                           {%- for value in option.values -%}
                             <option value="{{ value | escape }}" {% if option.selected_value == value %}selected="selected"{% endif %}>
@@ -249,13 +266,14 @@
                   </script>
                 </variant-selects>
               {%- endif -%}
+
             {%- endunless -%}
 
             <noscript class="product-form__noscript-wrapper-{{ section.id }}">
               <div class="product-form__input{% if product.has_only_default_variant %} hidden{% endif %}">
                 <label class="form__label" for="Variants-{{ section.id }}">{{ 'products.product.product_variants' | t }}</label>
                 <div class="select">
-                  <select name="id" id="Variants-{{ section.id }}" class="select__select" form="{{ product_form_id }}">
+                  <select name="id" id="Variants-{{ section.id }}" class="select__select" form="product-form">
                     {%- for variant in product.variants -%}
                       <option
                         {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}
@@ -286,7 +304,7 @@
                 </div>
 
                 {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
-                  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" disabled>
+                  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
                   <div class="product-form__buttons">
                     <button
                       type="submit"
@@ -294,18 +312,11 @@
                       class="product-form__submit button button--full-width {% if block.settings.show_dynamic_checkout and product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}"
                     {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
                     >
-                        <span>
-                          {%- if product.selected_or_first_available_variant.available -%}
-                            {{ 'products.product.add_to_cart' | t }}
-                          {%- else -%}
-                            {{ 'products.product.sold_out' | t }}
-                          {%- endif -%}
-                        </span>
-                        <div class="loading-overlay__spinner hidden">
-                          <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                            <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-                          </svg>
-                        </div>
+                        {%- if product.selected_or_first_available_variant.available -%}
+                          {{ 'products.product.add_to_cart' | t }}
+                        {%- else -%}
+                          {{ 'products.product.sold_out' | t }}
+                        {%- endif -%}
                     </button>
                     {%- if block.settings.show_dynamic_checkout -%}
                       {{ form | payment_button }}
@@ -363,7 +374,12 @@
         {%- endfor -%}
       </div>
     </div>
-  </div>
+    </div>
+    {%- if product.description != blank -%}
+    <div class="product__description rte" style="text-align: center">
+      {{ product.description }}
+    </div>
+    {%- endif -%}
 
   <product-modal id="ProductModal-{{ section.id }}" class="product-media-modal media-modal">
     <div class="product-media-modal__dialog" role="dialog" aria-label="{{ 'products.modal.label' | t }}" aria-modal="true" tabindex="-1">
@@ -407,6 +423,8 @@
     </modal-dialog>
   {%- endfor -%}
 </section>
+  
+  {{ 'customGenerator.js' | asset_url | script_tag }}
 
 {% javascript %}
   class ProductModal extends ModalDialog {
@@ -416,6 +434,7 @@
 
     hide() {
       super.hide();
+      window.pauseAllMedia();
     }
 
     show(opener) {
@@ -827,3 +846,7 @@
   ]
 }
 {% endschema %}
+
+
+
+

@@ -4,27 +4,55 @@
       "type": "main-article",
       "blocks": {
         "featured_image": {
-          "type": "featured_image"
+          "type": "featured_image",
+          "settings": {
+            "image_height": "adapt"
+          }
         },
         "title": {
-          "type": "title"
+          "type": "title",
+          "settings": {
+            "blog_show_date": false,
+            "blog_show_author": false
+          }
         },
         "content": {
-          "type": "content"
+          "type": "content",
+          "settings": {
+          }
         },
         "share": {
-          "type": "share"
+          "type": "share",
+          "settings": {
+            "share_label": "Share this post"
+          }
         }
       },
       "block_order": [
         "featured_image",
         "title",
-        "share",
-        "content"
-      ]
+        "content",
+        "share"
+      ],
+      "settings": {
+      }
+    },
+    "163534241947fe6d87": {
+      "type": "featured-blog",
+      "settings": {
+        "heading": "This might be interesting to you",
+        "blog": "en",
+        "post_limit": 3,
+        "show_image": false,
+        "show_date": true,
+        "show_author": false,
+        "soft_background": false,
+        "show_view_all": true
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "163534241947fe6d87"
   ]
 }

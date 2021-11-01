@@ -1,5 +1,7 @@
 .multicolumn .title {
   margin: 0;
+  font-size: 4rem;
+  text-align: center;
 }
 
 .multicolumn.no-heading .title {
@@ -8,13 +10,13 @@
 
 @media screen and (max-width: 749px) {
   .multicolumn.no-heading.background-secondary {
-    padding-top: 5rem;
+    padding-top: 2rem;
   }
 }
 
 @media screen and (min-width: 750px) {
   .multicolumn.no-heading:not(.background-secondary) {
-    margin-top: calc(6rem + var(--page-width-margin));
+    margin-top: 6rem;
   }
 }
 
@@ -49,7 +51,7 @@
 
 @media screen and (min-width: 750px) {
   .multicolumn .button {
-    margin-top: 4rem;
+    margin-top: 2rem;
   }
 }
 
@@ -63,23 +65,18 @@
 }
 
 .multicolumn:not(.background-none) .multicolumn-card {
-  background: rgba(var(--color-foreground), 0.04);
+  background: rgba(var(--color-base-background-2));
   height: 100%;
+  border-radius: 2.4rem;
 }
 
 .multicolumn.background-secondary .multicolumn-card {
-  background: rgb(var(--color-background));
+  background: rgb(var(--color-base-background-2));
+  border-radius: 2.4rem;
 }
 
 .multicolumn.background-secondary {
   padding: 4rem 0 5rem;
-}
-
-@media screen and (min-width: 750px) {
-  .multicolumn.background-secondary {
-    padding: calc(4rem + var(--page-width-margin)) 0
-      calc(5rem + var(--page-width-margin));
-  }
 }
 
 @media screen and (max-width: 749px) {
@@ -90,16 +87,6 @@
 
 .multicolumn:not(.background-secondary) {
   margin: 5rem 0;
-}
-
-@media screen and (min-width: 750px) {
-  .multicolumn:not(.background-secondary) {
-    margin: calc(5rem + var(--page-width-margin)) 0;
-  }
-}
-
-.multicolumn-list h3 {
-  line-height: calc(1 + 0.5 / max(1, var(--font-heading-scale)));
 }
 
 .multicolumn-list h3,
@@ -114,7 +101,8 @@
 }
 
 .multicolumn-card__info > :nth-child(2) {
-  margin-top: 1rem;
+  margin-top: 0.8rem;
+  font-size: 1.4rem;
 }
 
 .multicolumn-list__item.center .media--adapt,
@@ -164,7 +152,7 @@
 
   .multicolumn-list__item,
   .grid--4-col-desktop .multicolumn-list__item {
-    padding-bottom: 0;
+    padding: auto;
   }
 
   .grid--2-col-tablet .multicolumn-list__item {
@@ -198,7 +186,7 @@
 }
 
 .multicolumn-card__info {
-  padding: 2.5rem 2.5rem;
+  padding: 2.5rem 4rem;
 }
 
 .background-none .multicolumn-card__info {

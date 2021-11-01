@@ -1,0 +1,11 @@
+.card-designer-slide {
+  max-width: 40%;
+  margin-inline: 30%;
+}
+
+@media screen and (max-width: 720px) {
+  .card-designer-slide {
+    max-width: 70%;
+    margin-inline: 15%;
+  }
+}

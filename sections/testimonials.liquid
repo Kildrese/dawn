@@ -1,0 +1,135 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+
+<style> 
+.splide {
+ visibility: visible; 
+}
+</style>
+
+
+  <div class="module-wrapper style-{{ section.settings.style }} border">
+  <div class="module dynamic-testimonials">
+    {% if section.settings.title != blank or section.settings.subtitle != blank %}
+      <div class="module-header">
+        {% if section.settings.title != blank %}
+          <h3 class="module-title dynamic-testimonials-title">
+            {{ section.settings.title | escape }}
+          </h3>
+        {% endif %}
+        {% if section.settings.subtitle != blank %}
+          <p class="module-subtitle">
+            {{ section.settings.subtitle | escape }}
+          </p>
+        {% endif %}
+      </div>
+    {% endif %}
+    </div>
+</div>
+
+<script>
+  document.addEventListener( 'DOMContentLoaded', function() {
+    new Splide( '#testimonials',{
+      type: 'loop',
+    height  : '300px',
+    }).mount();
+  } );
+</script>
+
+{% schema %}
+  {
+  "name": "Testimonials2",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Background style",
+      "options": [
+        {
+          "value": "default",
+          "label": "Default"
+        },
+        {
+          "value": "light",
+          "label": "Light"
+        }
+      ],
+      "default": "default"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Testimonials"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subheading"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "quote",
+          "label": "Quote",
+          "default": "<p>Showcase up to six testimonials to build trust with potential customers.</p>"
+        },
+        {
+          "type": "text",
+          "id": "source",
+          "label": "Source",
+          "default": "Source"
+        },
+        {
+          "type": "text",
+          "id": "city",
+          "label": "City"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Avatar image",
+          "info": "120 x 120px .jpg required."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Text",
+      "name": "Testimonials",
+      "settings": {
+        "style": "default"
+      },
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p>Showcase up to six testimonials to build trust with potential customers.</p>",
+            "source": "Source's name"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p>Showcase up to six testimonials to build trust with potential customers.</p>",
+            "source": "Source's name"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

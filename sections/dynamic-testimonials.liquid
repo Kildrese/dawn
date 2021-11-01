@@ -1,0 +1,271 @@
+<link rel="stylesheet" href="{{ 'dynamic-testimonials.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<script
+  type="application/json"
+  data-section-id="{{ section.id }}"
+  data-section-type="dynamic-testimonials"
+></script>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+
+<style> 
+.splide {
+ visibility: visible; 
+}
+  .wrapper {
+    width: 70%;
+    margin: auto;
+  }
+  @media screen and (max-width: 1020px) {
+  .wrapper {
+    width: 90%;
+  }
+}
+  .gap {
+    height: 10px;
+  }
+  .info {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .is-prev {
+    opacity: 0.5;
+  }
+  .is-next {
+    opacity: 0.5;
+  }
+  .splide__pagination__page.is-active{
+    background: #078080;
+  }
+  .splide__pagination__page{
+    background: #2a5a5a;
+  }
+  .splide__arrow--prev {
+    left: 30vw;
+  }
+  .splide__arrow--next {
+    right: 30vw;
+  }
+  @media screen and (max-width: 1020px) {
+  .splide__arrow--prev {
+    left: 20vw;
+  }
+  .splide__arrow--next {
+    right: 20vw;
+  }
+  }
+  @media screen and (max-width: 750px) {
+  .splide__arrow--prev {
+    left: 10%;
+  }
+  .splide__arrow--next {
+    right: 10%;
+  }
+  }
+  .quote { 
+    font-size: 1.4rem;
+  }
+  .splide__slide {
+    display: inherit;
+    bottom: 1em;
+  }
+  .splide__pagination {
+    bottom: -1em;
+  }
+</style>
+
+  <div class="color-background-2 module-wrapper style-{{ section.settings.style }} border">
+  <div class="module dynamic-testimonials">
+    {% if section.settings.title != blank or section.settings.subtitle != blank %}
+      <div class="module-header">
+        {% if section.settings.title != blank %}
+          <h3 class="module-title dynamic-testimonials-title">
+            {{ section.settings.title | escape }}
+          </h3>
+        {% endif %}
+        {% if section.settings.subtitle != blank %}
+          <p class="module-subtitle">
+            {{ section.settings.subtitle | escape }}
+          </p>
+        {% endif %}
+      </div>
+    {% endif %}
+    <div id="testimonials" class="splide">
+  <div class="splide__track">
+		<ul class="splide__list">
+           {% for block in section.blocks %}
+
+			<li class="splide__slide">
+              <div
+                class="wrapper"
+                data-position="{{ forloop.index }}"
+                data-index="{{ forloop.index }}"
+                {{ block.shopify_attributes }}>
+                  <div class="quote">
+                      {{ block.settings.quote }}
+                  </div>
+                <div class="gap">
+                </div>
+                  <div class="info">
+                    {% if block.settings.image %}
+                    <div class="dynamic-testimonials-slides-list-item-footer-image">
+                          {%
+                            render 'rimg',
+                            class: 'dynamic-testimonial-avatar',
+                            img: block.settings.image,
+                            size: '60x60',
+                            lazy: false,
+                            crop: 'center'
+                          %}
+                        </div>
+                     {% endif %}
+                      {% if block.settings.source != blank or block.settings.city != blank %}
+                        <div class="dynamic-testimonials-slides-list-item-footer-text">
+                          {% if block.settings.source != blank %}
+                            <div class="dynamic-testimonial-source">
+                              {{ block.settings.source | escape }}
+                            </div>
+                          {% endif %}
+                          {% if block.settings.city != blank %}
+                            <p class="dynamic-testimonial-city">
+                              {{ block.settings.city | escape }}
+                            </p>
+                          {% endif %}
+                        </div>
+                      {% endif %}
+                  </div>
+              </div>
+          </li>
+           {% endfor %}
+			
+
+		</ul>
+  </div>
+</div>
+       
+  </div>
+</div>
+<script>
+  document.addEventListener( 'DOMContentLoaded', function() {
+    new Splide( '#testimonials',{
+      type: 'loop',
+      perPage : 1,
+      fixedWidth: '40vw',
+      padding: '30vw',
+      breakpoints : {
+          '1600': {
+            fixedWidth: '50vw',
+            padding: '25vw',
+          },
+          '1000': {
+            fixedWidth: '60vw',
+            padding: '20vw',
+          },
+          '720': {
+            fixedWidth: '80vw',
+            padding: '10vw',
+          },
+          '400': {
+            fixedWidth: '100vw',
+            padding: '0vw',
+          }
+        }
+		
+    }).mount();
+  } );
+</script>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Background style",
+      "options": [
+        {
+          "value": "default",
+          "label": "Default"
+        },
+        {
+          "value": "light",
+          "label": "Light"
+        }
+      ],
+      "default": "default"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Testimonials"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subheading"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "quote",
+          "label": "Quote",
+          "default": "<p>Showcase up to six testimonials to build trust with potential customers.</p>"
+        },
+        {
+          "type": "text",
+          "id": "source",
+          "label": "Source",
+          "default": "Source"
+        },
+        {
+          "type": "text",
+          "id": "city",
+          "label": "City"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Avatar image",
+          "info": "120 x 120px .jpg required."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Text",
+      "name": "Testimonials",
+      "settings": {
+        "style": "default"
+      },
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p>Showcase up to six testimonials to build trust with potential customers.</p>",
+            "source": "Source's name"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p>Showcase up to six testimonials to build trust with potential customers.</p>",
+            "source": "Source's name"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

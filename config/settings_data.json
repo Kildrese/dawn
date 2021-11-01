@@ -1,5 +1,95 @@
 {
-  "current": "Default",
+  "current": {
+    "colors_solid_button_labels": "#fffffe",
+    "colors_accent_1": "#078080",
+    "colors_accent_2": "#f45d48",
+    "colors_text": "#078080",
+    "colors_outline_button_labels": "#078080",
+    "colors_background_1": "#f8f5f2",
+    "colors_background_2": "#fffffe",
+    "type_header_font": "lora_n7",
+    "type_body_font": "poppins_n4",
+    "accent_icons": "text",
+    "page_width": "1200",
+    "predictive_search_enabled": false,
+    "predictive_search_show_vendor": false,
+    "favicon": "shopify:\/\/shop_images\/favicon_115c0825-d1b8-4b96-bb31-87ebffdaa043.png",
+    "sections": {
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "menu": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Our products",
+              "menu": "our-products"
+            }
+          },
+          "2c5e8e93-ebd4-407d-8045-2e0303afd6a5": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Information",
+              "menu": "footer"
+            }
+          },
+          "075c16c5-941c-4299-a007-0ab55422f47b": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Policies",
+              "menu": "agb"
+            }
+          }
+        },
+        "block_order": [
+          "menu",
+          "2c5e8e93-ebd4-407d-8045-2e0303afd6a5",
+          "075c16c5-941c-4299-a007-0ab55422f47b"
+        ],
+        "settings": {
+          "color_scheme": "background-1",
+          "newsletter_enable": false,
+          "newsletter_heading": "Footer",
+          "show_social": false,
+          "enable_country_selector": true,
+          "enable_language_selector": true,
+          "payment_enable": true
+        }
+      },
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "blocks": {
+          "e366fdec-ee07-4ad1-8d55-9c0fd5080b40": {
+            "type": "announcement",
+            "settings": {
+              "text": "Enjoy free shipping worldwide!",
+              "color_scheme": "background-2",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "e366fdec-ee07-4ad1-8d55-9c0fd5080b40"
+        ],
+        "settings": {
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "color_scheme": "background-1",
+          "logo": "shopify:\/\/shop_images\/bumpee-logo.png",
+          "logo_width": 130,
+          "logo_position": "top-center",
+          "menu": "main-menu-1",
+          "show_line_separator": false,
+          "enable_sticky_header": true
+        }
+      }
+    },
+    "content_for_index": [
+
+    ]
+  },
   "presets": {
     "Default": {
       "colors_solid_button_labels": "#FFFFFF",
@@ -24,7 +114,9 @@
           },
           "block_order": [
             "announcement-bar-0"
-          ]
+          ],
+          "settings": {
+          }
         }
       }
     },
@@ -41,21 +133,25 @@
       "sections": {
         "footer": {
           "type": "footer",
-          "settings": {
-            "color_scheme": "accent-1"
-          },
           "blocks": {
             "menu": {
-              "type": "link_list"
+              "type": "link_list",
+              "settings": {
+              }
             },
             "text": {
-              "type": "text"
+              "type": "text",
+              "settings": {
+              }
             }
           },
           "block_order": [
             "menu",
             "text"
-          ]
+          ],
+          "settings": {
+            "color_scheme": "accent-1"
+          }
         }
       }
     }

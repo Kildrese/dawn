@@ -11,7 +11,7 @@
   font-weight: normal;
 }
 
-.cart-item__quantity-wrapper {
+.cart-item__quantity {
   display: flex;
 }
 
@@ -25,7 +25,7 @@
 
 .cart-item__image {
   height: auto;
-  max-width: calc(10rem / var(--font-body-scale));
+  max-width: 10rem;
 }
 
 @media screen and (min-width: 750px) {
@@ -34,9 +34,13 @@
   }
 }
 
+.js .cart-item__image {
+  cursor: pointer;
+}
+
 .cart-item__details {
   font-size: 1.6rem;
-  line-height: calc(1 + 0.4 / var(--font-body-scale));
+  line-height: 1.4;
 }
 
 .cart-item__details > * {
@@ -50,17 +54,6 @@
 
 .cart-item__media {
   position: relative;
-}
-
-.cart-item__link {
-  display: block;
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
 }
 
 .cart-item__name {
@@ -96,7 +89,7 @@
 .product-option {
   font-size: 1.4rem;
   word-break: break-all;
-  line-height: calc(1 + 0.5 / var(--font-body-scale));
+  line-height: 1.5;
 }
 
 .cart-item cart-remove-button {
@@ -114,7 +107,7 @@
 cart-remove-button .button {
   box-shadow: none;
   color: rgba(var(--color-base-text), 0.75);
-  min-width: calc(4.5rem / var(--font-body-scale));
+  min-width: 4.5rem;
   min-height: 4.5rem;
   padding: 0;
   margin: 0 0.1rem 0.1rem 0;
@@ -157,14 +150,13 @@ cart-remove-button .icon-remove {
   }
 }
 
-.cart-item .loading-overlay:not(.hidden) ~ * {
+.loading-overlay:not(.hidden) ~ * {
   visibility: hidden;
 }
 
 .cart-item__error {
   display: flex;
   align-items: flex-start;
-  margin-top: 1rem;
 }
 
 .cart-item__error-text {
@@ -176,6 +168,7 @@ cart-remove-button .icon-remove {
   flex-shrink: 0;
   width: 1.2rem;
   margin-right: 0.7rem;
+  margin-top: 0.1rem;
 }
 
 .cart-item__error-text:empty + svg {
@@ -235,9 +228,6 @@ cart-remove-button .icon-remove {
 
   .cart-item__quantity {
     grid-column: 2 / 5;
-  }
-
-  .cart-item__quantity-wrapper {
     flex-wrap: wrap;
   }
 
@@ -246,10 +236,6 @@ cart-remove-button .icon-remove {
     align-items: flex-start;
     justify-content: flex-end;
   }
-}
-
-.cart-item__error-text + svg {
-  margin-top: 0.4rem;
 }
 
 @media screen and (min-width: 750px) {
@@ -300,6 +286,14 @@ cart-remove-button .icon-remove {
 
   .cart-item__price-wrapper > *:only-child:not(.cart-item__discounted-prices) {
     margin-top: 1rem;
+  }
+
+  .cart-item__error {
+    align-items: center;
+  }
+
+  .cart-item__error-text + svg {
+    margin-top: -0.2rem;
   }
 }
 

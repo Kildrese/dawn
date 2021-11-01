@@ -1,106 +1,263 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
-      "settings": {
-        "desktop_text_box_position": "flex-end"
-      },
+    "163204817589657864": {
+      "type": "image-with-text",
       "blocks": {
-        "heading": {
+        "163204817589657864-0": {
           "type": "heading",
           "settings": {
-            "heading": "Talk about your brand"
+            "heading": "Your networking tool."
           }
         },
-        "button": {
-          "type": "buttons",
+        "163204817589657864-1": {
+          "type": "text",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_label_2": ""
+            "text": "<p>Manage your business contacts and network more efficiently.<\/p>"
+          }
+        },
+        "163204817589657864-2": {
+          "type": "button",
+          "settings": {
+            "button_label": "Set up your profile ➔",
+            "button_link": "http:\/\/onelink.to\/7vxfje"
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
-      ]
-    },
-    "rich_text": {
-      "type": "rich-text",
-      "blocks": {
-        "heading": {
-          "type": "heading"
-        },
-        "text": {
-          "type": "text"
-        },
-        "button": {
-          "type": "button"
-        }
-      },
-      "block_order": [
-        "heading",
-        "text",
-        "button"
-      ]
-    },
-    "featured_products": {
-      "type": "featured-collection",
+        "163204817589657864-0",
+        "163204817589657864-1",
+        "163204817589657864-2"
+      ],
       "settings": {
-        "title": "Featured products",
-        "collection": "all",
-        "image_ratio": "square"
+        "image": "shopify:\/\/shop_images\/800x640-header-2_ede7eac6-d1c0-4200-9bfb-edc7ce8baa2a.jpg",
+        "height": "adapt",
+        "color_scheme": "background-2",
+        "layout": "text_first"
       }
     },
-    "collage": {
-      "type": "collage",
-      "blocks": {
-        "video": {
-          "type": "video"
-        },
-        "product": {
-          "type": "product"
-        },
-        "collection": {
-          "type": "collection"
-        }
-      },
-      "block_order": [
-        "video",
-        "product",
-        "collection"
-      ]
-    },
-    "video": {
-      "type": "video"
-    },
-    "multi_column": {
+    "1632048188928ed18f": {
       "type": "multicolumn",
       "blocks": {
-        "column1": {
-          "type": "column"
+        "1632048188928ed18f-0": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/spotlight-phone_ed174c6e-dda9-4b11-9727-a9c757b9b724.jpg",
+            "title": "Free setup",
+            "text": "<p>Set up your business profile as a digital business card with the bumpee app.<\/p>"
+          }
         },
-        "column2": {
-          "type": "column"
+        "1632048188928ed18f-1": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/spotlight-users_0d35ebdd-9bdf-4495-8630-a01f835377f0.jpg",
+            "title": "Contact Archive",
+            "text": "<p>Manage your contacts in your dedicated business networking hub.<\/p>"
+          }
         },
-        "column3": {
-          "type": "column"
+        "1632048188928ed18f-2": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/spotlight-map_676f659f-e0a0-4ab6-8475-8214280d8330.jpg",
+            "title": "Geotagging",
+            "text": "<p>The app automatically saves the location of where you met the other person.<\/p>"
+          }
+        },
+        "c8427125-9d6b-4254-888a-6e06da846027": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/spotlight-share.jpg",
+            "title": "Seamless sharing",
+            "text": "<p>Share your profile with anyone who has an internet connection.<\/p>"
+          }
         }
       },
       "block_order": [
-        "column1",
-        "column2",
-        "column3"
-      ]
+        "1632048188928ed18f-0",
+        "1632048188928ed18f-1",
+        "1632048188928ed18f-2",
+        "c8427125-9d6b-4254-888a-6e06da846027"
+      ],
+      "settings": {
+        "title": "Our app, the best on the market",
+        "image_width": "third",
+        "image_ratio": "circle",
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "swipe_on_mobile": false
+      }
+    },
+    "1633370403909ce6c3": {
+      "type": "dynamic-testimonials",
+      "blocks": {
+        "1633370403909ce6c3-0": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p>\"Funktioniert perfekt. Die Einrichtung war super einfach, schnell und man ist mit dem Tag einer der Vorreiter für eine neue Art der Visitenkarten. Werde ich definitiv weiterempfehlen. :)\"<\/p>",
+            "source": "Nicolas Straub",
+            "city": "Head of ortu.agency",
+            "image": "shopify:\/\/shop_images\/testimonial-nico-straub_ac833bd2-2e98-4212-8d3b-2470f42dac54.jpg"
+          }
+        },
+        "1633370403909ce6c3-1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p>\"What a great idea: To digitalize the whole use case of analog business cards and to reinvent the whole process of connecting with people.\"<\/p>",
+            "source": "Henri Biem",
+            "city": "Business Student",
+            "image": "shopify:\/\/shop_images\/20180605_Mitarbeitervorstellung_Henri-Zoe_final-9957.jpg"
+          }
+        },
+        "a642d16b-d060-4476-88c6-d82918ce6492": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p>\"(...)Macht es für meine persönlichen Zwecke einfach um einiges einfacher, mich zu vernetzten und gleich alle meine wichtigen Kontaktdaten weiterzugeben.\"<\/p>",
+            "source": "Malcolm Ughutevbe",
+            "city": "Engineering Student",
+            "image": "shopify:\/\/shop_images\/malcolm.png"
+          }
+        },
+        "91c56457-f395-44e5-a2b4-2e14cbe04916": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p>\"Perfect if you’re tired of paper business cards! Such a great and innovate idea to connect with people - easy, fast & works with all platforms and social media.\"<\/p>",
+            "source": "Cecilia Lucio",
+            "city": "Self-employed Well-being Coach",
+            "image": "shopify:\/\/shop_images\/woman-cradles-coffee-on-a-sofa.jpg"
+          }
+        },
+        "3245cfa8-7cc2-4527-b3da-62b3a5fe9a60": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p>\"Endlich eine einfache Lösung um nicht ständig zig Visitenkarten rumtragen zu müssen, die eh wieder jeder verliert.(...)\"<\/p>",
+            "source": "David Chu",
+            "city": "from Germany",
+            "image": "shopify:\/\/shop_images\/portrait-of-young-man-leaning-on-chair.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "1633370403909ce6c3-0",
+        "1633370403909ce6c3-1",
+        "a642d16b-d060-4476-88c6-d82918ce6492",
+        "91c56457-f395-44e5-a2b4-2e14cbe04916",
+        "3245cfa8-7cc2-4527-b3da-62b3a5fe9a60"
+      ],
+      "settings": {
+        "style": "default",
+        "title": "Five-star quality",
+        "subtitle": "What our customers say about our product"
+      }
+    },
+    "163424908200fb4faa": {
+      "type": "multicolumn",
+      "blocks": {
+        "8e60acc5-a83e-44e8-9ae0-d19a98d4a24d": {
+          "type": "column",
+          "settings": {
+            "title": "Does the other person need the app to view my profile?",
+            "text": "<p>No. Your profile can be viewed by anyone with a smartphone or computer. You can share your profile with a custom link, your custom generated QR-code or your Smart Business Card! <a href=\"https:\/\/bumpee.co\/we\" target=\"_blank\" title=\"https:\/\/bumpee.co\/we\"><strong>View profile example.<\/strong><\/a><\/p>"
+          }
+        },
+        "163424908200fb4faa-1": {
+          "type": "column",
+          "settings": {
+            "title": "How is your product different from the others?",
+            "text": "<p>Our software combines fundamental networking tools into one product. You can save and manage other profiles, set up your custom digital business card & add or remove your NFC products.<\/p>"
+          }
+        },
+        "163424908200fb4faa-2": {
+          "type": "column",
+          "settings": {
+            "title": "What's a Smart Business Card?",
+            "text": "<p>Our Smart Business Cards are custom printed NFC cards that you can just hold up to another person's phone to share your profile with them.<\/p>"
+          }
+        },
+        "163424908200fb4faa-0": {
+          "type": "column",
+          "disabled": true,
+          "settings": {
+            "title": "Is my data safe?",
+            "text": "<p>You data is securely stored and encrypted. It can only be viewed by  people who you share your profile or link with.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "8e60acc5-a83e-44e8-9ae0-d19a98d4a24d",
+        "163424908200fb4faa-1",
+        "163424908200fb4faa-2",
+        "163424908200fb4faa-0"
+      ],
+      "settings": {
+        "title": "Frequently asked questions",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "swipe_on_mobile": true
+      }
+    },
+    "1634480923f3740e1d": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Our Smart Business Cards",
+        "collection": "cards",
+        "products_to_show": 4,
+        "show_view_all": true,
+        "swipe_on_mobile": true,
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "add_image_padding": false,
+        "show_image_outline": false,
+        "show_vendor": false,
+        "show_rating": false
+      }
+    },
+    "1632047650edca1ec2": {
+      "type": "rich-text",
+      "blocks": {
+        "1632047650edca1ec2-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Get started.",
+            "heading_size": "h1"
+          }
+        },
+        "1632047650edca1ec2-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Setting up your profile and sharing it to other people is <strong>100% free<\/strong>.<\/p>"
+          }
+        },
+        "484de150-bd1f-4f39-9095-093f5910386f": {
+          "type": "button",
+          "settings": {
+            "button_label": "Set up your profile ➔",
+            "button_link": "http:\/\/onelink.to\/7vxfje",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "1632047650edca1ec2-0",
+        "1632047650edca1ec2-1",
+        "484de150-bd1f-4f39-9095-093f5910386f"
+      ],
+      "settings": {
+        "color_scheme": "accent-1",
+        "full_width": true
+      }
     }
   },
   "order": [
-    "image_banner",
-    "rich_text",
-    "featured_products",
-    "collage",
-    "video",
-    "multi_column"
+    "163204817589657864",
+    "1632048188928ed18f",
+    "1633370403909ce6c3",
+    "163424908200fb4faa",
+    "1634480923f3740e1d",
+    "1632047650edca1ec2"
   ]
 }
